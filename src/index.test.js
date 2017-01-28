@@ -12,13 +12,13 @@ describe('our first test', () =>
 
 describe('index.html', () =>
 {
-	it('should say Hello World', (done) => //must tell mocha that the test is done because of asyncronous callback function (err,window)
+	it('should have h1 that says Users', (done) => //must tell mocha that the test is done because of asyncronous callback function (err,window)
 	{
 		const index = fs.readFileSync('./src/index.html', "utf-8");
 		jsdom.env(index, function(err,window) //can optionally pass array of JS files as second parameter, but if you use fetch, it has to be isomorphic
 		{
 			const h1 = window.document.getElementsByTagName('h1')[0];
-			expect(h1.innerHTML).to.equal("Hello World!?!");
+			expect(h1.innerHTML).to.equal("Users");
 			done();
 			window.close();
 		});
